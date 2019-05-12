@@ -1,0 +1,110 @@
+---
+title:               "BAG3 Pathway Analysis"
+author:
+  - name:            "Emir Turkes"
+  - name:            "Columbia University"
+date:                '`r strftime(Sys.time(), format = "%B %d, %Y")`'
+bibliography:        "../bag3-pathway-analysis.bib"
+biblio-style:        apalike
+link-citations:      true
+output:
+  html_document:
+    number_sections: true
+    theme:           lumen
+    toc:             true
+    toc_depth:       2
+    toc_float:
+      collapsed:     false
+      smooth_scroll: false
+
+knit:
+  (function(inputFile, encoding) {rmarkdown::render(
+    inputFile,
+    encoding = encoding,
+    output_file = "../results/bag3-pathway-analysis.html"
+  )})
+---
+
+```{r, include = FALSE}
+# Copyright 2019 Emir Turkes
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+knitr::opts_chunk[["set"]](echo = TRUE)
+```
+
+<style type="text/css">
+
+body{ /* Normal  */
+  font-size: 16px;
+}
+h1.title {
+  font-size: 35px;
+}
+h1 { /* Header 1 */
+  font-size: 24px;
+}
+h2 { /* Header 2 */
+  font-size: 22px;
+}
+h3 { /* Header 3 */
+  font-size: 20px;
+}
+.toc-content {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+div.tocify {
+  width: 100%;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+div.main-container {
+  max-width: none;
+  width: 100%;
+}
+
+</style>
+
+*This is an in-depth analysis based on one or more initial broad analyses.*
+
+The background for this data is as follows:
+
+- Co-IP MS (co-immunoprecipitation mass spectrometry) using BAG3 as bait from [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
+
+This analysis was performed in R except where noted.
+The source code and instructions for rerunning the analysis can be found at [github.com/eturkes/bag3-pathway-analysis](https://github.com/eturkes/bag3-pathway-analysis).
+
+# Final Results
+
+**Read just this section for the final results of the analysis and a summary of the methods.**
+
+# ~~~~ Breakdown of Methods ~~~~ {-}
+
+The following sections breakdown the methods used to transform the contents in `Original Data` to those in `Final Results`.
+
+# Original Data
+
+# Conclusion
+
+This concludes the methods used in this analysis.
+Below we simply write the data to disk for exploration in `Final Results` at the top of this report.
+
+```{r}
+devtools::session_info()
+```
+
+# References

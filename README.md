@@ -15,7 +15,7 @@ limitations under the License.
 -->
 
 # BAG3 Pathway Analysis
-#### *This analysis is currently incomplete*
+#### *This analysis is a work-in-progress*
 
 Pathway Analysis of the BAG3 protein  
 
