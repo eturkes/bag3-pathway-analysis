@@ -40,7 +40,9 @@ knit:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-knitr::opts_chunk[["set"]](echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+
+library("magrittr")
 ```
 
 <style type="text/css">
@@ -97,6 +99,17 @@ The source code and instructions for rerunning the analysis can be found at [git
 The following sections breakdown the methods used to transform the contents in `Original Data` to those in `Final Results`.
 
 # Original Data
+
+This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
+
+```{r}
+bag3_co_ip <- readRDS("../assets/bag3-co-ip.rds")
+cols <- c("Genes", "Abundance Ratio: (scr/sh)", "scrRNA Abundance", "shBAG3 Abundance")
+
+# From my own package, provides custom formatting.
+eturkesRutils::datatable(bag3_co_ip) %>%
+  DT::formatRound(2) %>% DT::formatStyle(cols[1], `text-align` = "center")
+```
 
 # Conclusion
 
