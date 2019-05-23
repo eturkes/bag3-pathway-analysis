@@ -44,7 +44,7 @@ knit:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-library("magrittr")
+library(magrittr)
 ```
 
 <style type="text/css">
@@ -83,12 +83,15 @@ The following sections breakdown the methods used to transform the contents in `
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
 ```{r}
-bag3_co_ip <- readRDS("../assets/bag3-co-ip.rds")
-cols <- c("Genes", "Abundance Ratio: (scr/sh)", "scrRNA Abundance", "shBAG3 Abundance")
+co_ip_genes <- readRDS("../assets/co_ip_genes_final.rds")
+cols <- c(
+  "Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
+  "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance"
+)
 
 # From my own package, provides custom formatting.
-eturkesRutils::datatable(bag3_co_ip) %>%
-  DT::formatRound(2) %>% DT::formatStyle(cols[1], `text-align` = "center")
+eturkesRutils::datatable(co_ip_genes) %>%
+  DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
 ```
 
 # Conclusion
