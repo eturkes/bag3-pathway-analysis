@@ -82,14 +82,35 @@ The following sections breakdown the methods used to transform the contents in `
 
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
-```{r}
+## Sort Schemes {.tabset}
+
+Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
+
+```{r, include = TRUE, echo = FALSE}
 co_ip_genes <- readRDS("../assets/co_ip_genes_final.rds")
+```
+
+### Specificity with BAG3
+
+```{r, include = TRUE, echo = FALSE}
 cols <- c(
   "Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
   "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance"
 )
+co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
+rownames(co_ip_genes) <- NULL # Reset row numbers
 
 # From my own package, provides custom formatting.
+eturkesRutils::datatable(co_ip_genes) %>%
+  DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
+```
+
+### Abundance of Protein
+
+```{r, include = TRUE, echo = FALSE}
+co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
+rownames(co_ip_genes) <- NULL
+
 eturkesRutils::datatable(co_ip_genes) %>%
   DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
 ```
