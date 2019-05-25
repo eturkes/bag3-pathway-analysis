@@ -82,21 +82,21 @@ The following sections breakdown the methods used to transform the contents in `
 
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
-## Sort Schemes {.tabset}
-
-Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
-
-```{r, include = TRUE, echo = FALSE}
+```{r}
 co_ip_genes <- readRDS("../assets/co_ip_genes_final.rds")
-```
-
-### Specificity with BAG3
-
-```{r, include = TRUE, echo = FALSE}
 cols <- c(
   "Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
   "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance"
 )
+```
+
+## Sort Schemes {.tabset}
+
+Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
+
+### Specificity with BAG3
+
+```{r}
 co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
 rownames(co_ip_genes) <- NULL # Reset row numbers
 
@@ -107,7 +107,7 @@ eturkesRutils::datatable(co_ip_genes) %>%
 
 ### Abundance of Protein
 
-```{r, include = TRUE, echo = FALSE}
+```{r}
 co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
 rownames(co_ip_genes) <- NULL
 
