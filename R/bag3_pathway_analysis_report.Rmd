@@ -97,22 +97,44 @@ Two sort schemes are presented, one to show specificity with BAG3 and another to
 ### Specificity with BAG3
 
 ```{r}
-co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
-rownames(co_ip_genes) <- NULL # Reset row numbers
+co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
+rownames(co_ip_genes_spec) <- NULL # Reset row numbers
 
 # From my own package, provides custom formatting.
-eturkesRutils::datatable(co_ip_genes) %>%
+eturkesRutils::datatable(co_ip_genes_spec) %>%
   DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
 ```
 
 ### Abundance of Protein
 
 ```{r}
-co_ip_genes <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
-rownames(co_ip_genes) <- NULL
+co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
+rownames(co_ip_genes_abun) <- NULL
 
-eturkesRutils::datatable(co_ip_genes) %>%
+eturkesRutils::datatable(co_ip_genes_abun) %>%
   DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
+```
+
+## Input into g:Profiler {.tabset}
+
+We start by taking our gene lists and inputing them into [g:Profiler](https://biit.cs.ut.ee/gprofiler/gost), a web service for functional enrichment analysis.
+The tool can be operated interactively through a web browser, but an R client is also provided, so we use that.
+Since we have two gene lists, we shall continue analyzing them in parallel.
+
+### Specificity with BAG3
+
+```{r}
+gprofiler_spec <- gprofiler2::gost(
+  co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE, exclude_iea = TRUE
+)
+
+gprofiler2::gostplot(gprofiler_spec, capped = TRUE, interactive = TRUE)
+```
+
+### Abundance of Protein
+
+```{r}
+
 ```
 
 # Conclusion
