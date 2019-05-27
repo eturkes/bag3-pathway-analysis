@@ -16,15 +16,10 @@ output:
     toc_float:
       collapsed:     false
       smooth_scroll: false
-
 knit:
   (function(inputFile, encoding) {
     rmarkdown::render(
-      inputFile,
-      encoding = encoding,
-      output_file = "../results/bag3-pathway-analysis.html"
-    )
-  })
+      inputFile, encoding = encoding, output_file = "../results/bag3-pathway-analysis.html")})
 ---
 
 ```{r, include = FALSE}
@@ -43,13 +38,10 @@ knit:
 # limitations under the License.
 
 knitr::opts_chunk$set(echo = TRUE)
-
-library(magrittr)
 ```
 
 <style type="text/css">
-
-body{font-size: 16px;}
+body {font-size: 16px;}
 h1.title {font-size: 35px;}
 h1 {font-size: 24px;}
 h2 {font-size: 22px;}
@@ -58,7 +50,6 @@ h3 {font-size: 20px;}
 div.tocify {width: 100%;}
 .tocify-subheader .tocify-item {font-size: 0.95em; padding-left: 25px; text-indent: 0;}
 div.main-container {max-width: none; width: 100%;}
-
 </style>
 
 *This is an in-depth analysis based on one or more initial broad analyses.*
@@ -77,17 +68,28 @@ The source code and instructions for rerunning the analysis can be found at [git
 # ~~~~ Breakdown of Methods ~~~~ {-}
 
 The following sections breakdown the methods used to transform the contents in `Original Data` to those in `Final Results`.
+We start by loading in any required packages for our analysis and setting some global variables.
+
+```{r}
+library(conflicted)
+library(DT)
+library(gprofiler2)
+library(devtools)
+```
+
+```{r}
+assets_dir <- file.path(getwd(), "..", "assets")
+results_dir <- file.path(getwd(), "..", "results")
+```
 
 # Original Data
 
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
 ```{r}
-co_ip_genes <- readRDS("../assets/co_ip_genes_final.rds")
-cols <- c(
-  "Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
-  "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance"
-)
+co_ip_genes <- readRDS(file.path(assets_dir, "co_ip_genes_final.rds"))
+cols <- c("Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
+          "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
 
 ## Sort Schemes {.tabset}
@@ -98,24 +100,21 @@ Two sort schemes are presented, one to show specificity with BAG3 and another to
 
 ```{r}
 co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
-rownames(co_ip_genes_spec) <- NULL # Reset row numbers
-
-# From my own package, provides custom formatting.
-eturkesRutils::datatable(co_ip_genes_spec) %>%
-  DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
+rownames(co_ip_genes_spec) <- NULL # Reset row numbers.
+eturkesRutils::datatable(co_ip_genes_spec) %>% # From my own package, provides custom formatting.
+  formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
 ```
 
 ### Abundance of Protein
 
 ```{r}
 co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
-rownames(co_ip_genes_abun) <- NULL
-
-eturkesRutils::datatable(co_ip_genes_abun) %>%
-  DT::formatRound(c(2, 3, 4)) %>% DT::formatStyle(cols[1], `text-align` = "center")
+rownames(co_ip_genes_abun) <- NULL # Reset row numbers.
+eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides custom formatting.
+  formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
 ```
 
-## Input into g:Profiler {.tabset}
+## g:Profiler Analysis {.tabset}
 
 We start by taking our gene lists and inputing them into [g:Profiler](https://biit.cs.ut.ee/gprofiler/gost), a web service for functional enrichment analysis.
 The tool can be operated interactively through a web browser, but an R client is also provided, so we use that.
@@ -124,26 +123,26 @@ Since we have two gene lists, we shall continue analyzing them in parallel.
 ### Specificity with BAG3
 
 ```{r}
-gprofiler_spec <- gprofiler2::gost(
-  co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE, exclude_iea = TRUE
-)
-
-gprofiler2::gostplot(gprofiler_spec, capped = TRUE, interactive = TRUE)
+gprofiler_spec <- gost(co_ip_genes_spec$Genes, organism = "rnorvegicus",
+                       ordered_query = TRUE, exclude_iea = TRUE)
+gostplot(gprofiler_spec, capped = TRUE, interactive = TRUE)
 ```
 
 ### Abundance of Protein
 
 ```{r}
-
+gprofiler_abun <- gost(co_ip_genes_abun$Genes, organism = "rnorvegicus",
+                       ordered_query = TRUE, exclude_iea = TRUE)
+gostplot(gprofiler_abun, capped = TRUE, interactive = TRUE)
 ```
 
 # Conclusion
 
 This concludes the methods used in this analysis.
-Below we simply write the data to disk for exploration in `Final Results` at the top of this report.
+Below we simply write the data to disk for exploration in `Final Results` at the top of this report and output the `session_info`.
 
 ```{r}
-devtools::session_info()
+session_info()
 ```
 
 # References
