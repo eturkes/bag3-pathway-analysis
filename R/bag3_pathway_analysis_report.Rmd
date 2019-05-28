@@ -37,7 +37,7 @@ knit:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 8.5)
 ```
 
 <style type="text/css">
@@ -123,17 +123,23 @@ Since we have two gene lists, we shall continue analyzing them in parallel.
 ### Specificity with BAG3
 
 ```{r}
-gprofiler_spec <- gost(co_ip_genes_spec$Genes, organism = "rnorvegicus",
-                       ordered_query = TRUE, exclude_iea = TRUE)
-gostplot(gprofiler_spec, capped = TRUE, interactive = TRUE)
+gprofiler_spec <- gost(co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE)
+gostplot(gprofiler_spec)
+```
+
+```{r, fig.width = 11, fig.height = 93}
+publish_gosttable(gprofiler_spec)
 ```
 
 ### Abundance of Protein
 
 ```{r}
-gprofiler_abun <- gost(co_ip_genes_abun$Genes, organism = "rnorvegicus",
-                       ordered_query = TRUE, exclude_iea = TRUE)
-gostplot(gprofiler_abun, capped = TRUE, interactive = TRUE)
+gprofiler_abun <- gost(co_ip_genes_abun$Genes, organism = "rnorvegicus", ordered_query = TRUE)
+gostplot(gprofiler_abun)
+```
+
+```{r, fig.width = 11, fig.height = 94}
+publish_gosttable(gprofiler_abun)
 ```
 
 # Conclusion
