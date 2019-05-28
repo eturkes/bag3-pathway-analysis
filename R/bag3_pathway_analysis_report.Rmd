@@ -143,6 +143,10 @@ gostplot(gprofiler_abun)
 publish_gosttable(gprofiler_abun)
 ```
 
+## GSEA Analysis
+
+GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list. However, this method is only suitable when near-genomewide expression profiles are available, so we hold off using it until data such as an RNA-Seq set is ready.
+
 # Conclusion
 
 This concludes the methods used in this analysis.
