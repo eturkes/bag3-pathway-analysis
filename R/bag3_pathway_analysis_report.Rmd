@@ -114,12 +114,15 @@ eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides c
   formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
 ```
 
-## g:Profiler Analysis {.tabset}
+# g:Profiler
 
 We start by taking our gene lists and inputing them into [g:Profiler](https://biit.cs.ut.ee/gprofiler/gost), a web service for functional enrichment analysis [@raudvere_g:profiler:_2019].
 The tool can be operated interactively through a web browser, but an R client is also provided, so we use that.
-Since we have two gene lists, we shall continue analyzing them in parallel.
 g:Profiler is the first step in a 2019 Nature Protocols paper on pathway analysis [@reimand_pathway_2019] that we will generally be following for this analysis.
+
+## Sort Schemes {.tabset}
+
+Since we have two gene lists, we shall continue analyzing them in parallel.
 
 ### Specificity with BAG3
 
@@ -143,7 +146,7 @@ gostplot(gprofiler_abun)
 publish_gosttable(gprofiler_abun)
 ```
 
-## GSEA Analysis
+# GSEA
 
 GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list. However, this method is only suitable when near-genomewide expression profiles are available, so we hold off using it until data such as an RNA-Seq set is ready.
 
