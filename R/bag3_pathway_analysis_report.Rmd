@@ -19,7 +19,7 @@ output:
 knit:
   (function(inputFile, encoding) {
     rmarkdown::render(
-      inputFile, encoding = encoding, output_file = "../results/bag3-pathway-analysis.html")})
+      inputFile, encoding = encoding, output_file = "../results/bag3-pathway-analysis-report.html")})
 ---
 
 ```{r, include = FALSE}
