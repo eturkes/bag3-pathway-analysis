@@ -87,8 +87,8 @@ results_dir <- file.path(getwd(), "..", "results")
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
 ```{r}
-co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes_final.rds"))
-cols <- c("Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
+co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes.rds"))
+cols <- c("Genes", "BAG3 Specificity", "Abundance Ratio",
           "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
 
