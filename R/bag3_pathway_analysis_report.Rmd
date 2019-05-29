@@ -54,20 +54,22 @@ div.main-container {max-width: none; width: 100%;}
 
 *This is an in-depth analysis based on one or more initial broad analyses.*
 
-The background for this data is as follows:
+The goal of this analysis is to explore the functional role of [BAG3 (BCL2 Associated Athanogene 3)](https://www.genecards.org/cgi-bin/carddisp.pl?gene=BAG3).
 
-- Co-IP MS (co-immunoprecipitation mass spectrometry) using BAG3 as bait from [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
+Datasets used in this analysis include:
+
+- [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip): Co-IP MS (co-immunoprecipitation mass spectrometry) data using BAG3 as bait.
 
 This analysis was performed in R except where noted.
 The source code and instructions for rerunning the analysis can be found at [github.com/eturkes/bag3-pathway-analysis](https://github.com/eturkes/bag3-pathway-analysis).
 
 # Final Results
 
-**Read just this section for the final results of the analysis and a summary of the methods.**
+**Read just this section for the final results of the analysis and a brief summary of the methods.**
 
 # ~~~~ Breakdown of Methods ~~~~ {-}
 
-The following sections breakdown the methods used to transform the contents in `Original Data` to those in `Final Results`.
+The following top-level sections breakdown the methods used to perform the analysis.
 We start by loading in any required packages for our analysis and setting some global variables.
 
 ```{r}
@@ -84,17 +86,23 @@ results_dir <- file.path(getwd(), "..", "results")
 
 # Original Data
 
-This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
+The following subsection(s) provide a brief overview of the datasets used in this analysis.
+
+## BAG3 Co-IP MS {.tabset}
+
+Source: [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip)
+
+The final Co-IP MS dataset after cleaning as described in the report’s method section.
+Briefly, the original dataset was subject to missing value imputation via a custom method, renormalized, and changes between scr and shBAG3 conditions were hypothesis tested using the beta-binomial method.
+Additional validation was performed using Watson for Drug Discovery.
+Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
+Ideally, the two schemes would be combined to show which proteins interacted most highly with BAG3, but this is nontrivial to do accurately considering experimental limitations.
 
 ```{r}
 co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes.rds"))
 cols <- c("Genes", "BAG3 Specificity", "Abundance Ratio",
           "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
-
-## Sort Schemes {.tabset}
-
-Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
 
 ### Specificity with BAG3
 
@@ -114,17 +122,21 @@ eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides c
   formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
 ```
 
-# g:Profiler
+# Functional Enrichment Analysis
+
+## g:Profiler
 
 We start by taking our gene lists and inputing them into [g:Profiler](https://biit.cs.ut.ee/gprofiler/gost), a web service for functional enrichment analysis [@raudvere_g:profiler:_2019].
 The tool can be operated interactively through a web browser, but an R client is also provided, so we use that.
 g:Profiler is the first step in a 2019 Nature Protocols paper on pathway analysis [@reimand_pathway_2019] that we will generally be following for this analysis.
+The Manhattan plot obtained provides an interactive overview of terms enriched in the gene list and is followed by a listing of this information in tabular format.
+These figures are similar to those obtained using the g:Profiler web service.
 
-## Sort Schemes {.tabset}
+### BAG3 Co-IP MS {.tabset}
 
-Since we have two gene lists, we shall continue analyzing them in parallel.
+Since we have two gene lists from this set that are nontrivial to combine, we shall continue analyzing them in parallel.
 
-### Specificity with BAG3
+#### Specificity with BAG3
 
 ```{r}
 gprofiler_spec <- gost(co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE)
@@ -135,7 +147,7 @@ gostplot(gprofiler_spec)
 publish_gosttable(gprofiler_spec)
 ```
 
-### Abundance of Protein
+#### Abundance of Protein
 
 ```{r}
 gprofiler_abun <- gost(co_ip_genes_abun$Genes, organism = "rnorvegicus", ordered_query = TRUE)
@@ -146,25 +158,34 @@ gostplot(gprofiler_abun)
 publish_gosttable(gprofiler_abun)
 ```
 
-# GSEA
+## GSEA
 
-GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list. However, this method is only suitable when near-genomewide expression profiles are available, so we hold off using it until data such as an RNA-Seq set is ready.
+GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list.
+However, this method is only suitable when near-genomewide expression profiles are available, which means certain datasets, like that from the BAG3 Co-IP MS analysis, cannot be used.
 
-# Cytoscape
+# Interaction Networks
+
+## Cytoscape
 
 Cytoscape [@shannon_cytoscape:_2003] is an open-source platform for visualization of networks with an extensive collection of third-party apps.
 Together with the apps Enrichment Map [@merico_enrichment_2010] and AutoAnnotate [@kucera_autoannotate:_2016], results from g:Profiler and GSEA can be visualized in an intuitive way.
 Although APIs exist to carry out this process programmatically, it is unwieldy considering that networks must be manually adjusted in almost all cases, so at least for the time being we opt to use the Cytoscape GUI.
+In addition to static figures contained in this document, links are provided for the same figures using [CyNetShare](https://idekerlab.github.io/cy-net-share/), a web app that provides interactive exploration of Cytoscape data.
 
-![gprofiler-bag3-co-ip.svg](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
+### BAG3 Co-IP MS
 
-# Conclusion
+#### Specificity vs. Abundance
 
-This concludes the methods used in this analysis.
-Below we simply write the data to disk for exploration in `Final Results` at the top of this report and output the `session_info`.
+The following figure shows the difference in enriched pathways when using the "Specificity with BAG3" vs. the "Abundance of Protein" set.
+Based on the number of two-color nodes, we see that while most pathways overlap, there are some that are more highly dominated by one set over the other.
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
+
+# References
+
+This is the concluding section of the document.
+Here we write our data to disk for exploration in `Final Results` at the top of this report, output the `session_info`, and create a bibliography for works cited.
 
 ```{r}
 session_info()
 ```
-
-# References
