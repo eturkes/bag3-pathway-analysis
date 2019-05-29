@@ -87,7 +87,7 @@ results_dir <- file.path(getwd(), "..", "results")
 This section contains the cleaned dataset generated from the analysis in [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip).
 
 ```{r}
-co_ip_genes <- readRDS(file.path(assets_dir, "co_ip_genes_final.rds"))
+co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes_final.rds"))
 cols <- c("Genes", "Specificity: avg(Abun. Ratio, Watson)", "Abundance Ratio: (scr/sh)",
           "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
@@ -149,6 +149,14 @@ publish_gosttable(gprofiler_abun)
 # GSEA
 
 GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list. However, this method is only suitable when near-genomewide expression profiles are available, so we hold off using it until data such as an RNA-Seq set is ready.
+
+# Cytoscape
+
+Cytoscape [@shannon_cytoscape:_2003] is an open-source platform for visualization of networks with an extensive collection of third-party apps.
+Together with the apps Enrichment Map [@merico_enrichment_2010] and AutoAnnotate [@kucera_autoannotate:_2016], results from g:Profiler and GSEA can be visualized in an intuitive way.
+Although APIs exist to carry out this process programmatically, it is unwieldy considering that networks must be manually adjusted in almost all cases, so at least for the time being we opt to use the Cytoscape GUI.
+
+![gprofiler-bag3-co-ip.svg](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
 
 # Conclusion
 
