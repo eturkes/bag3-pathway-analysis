@@ -72,9 +72,9 @@ We start by loading in any required packages for our analysis and setting some g
 
 ```{r}
 library(conflicted)
+library(devtools)
 library(DT)
 library(gprofiler2)
-library(devtools)
 ```
 
 ```{r}
