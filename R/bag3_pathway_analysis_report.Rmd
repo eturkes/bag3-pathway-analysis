@@ -136,25 +136,31 @@ These figures are similar to those obtained using the g:Profiler web service.
 
 Since we have two gene lists from this set that are nontrivial to combine, we shall continue analyzing them in parallel.
 
+```{r}
+gprofiler_sources <- c("GO", "KEGG", "REAC")
+```
+
 #### Specificity with BAG3
 
 ```{r}
-gprofiler_spec <- gost(co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE)
+gprofiler_spec <- gost(
+  co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE, sources = gprofiler_sources)
 gostplot(gprofiler_spec)
 ```
 
-```{r, fig.width = 11, fig.height = 93}
+```{r, fig.width = 11, fig.height = 86}
 publish_gosttable(gprofiler_spec)
 ```
 
 #### Abundance of Protein
 
 ```{r}
-gprofiler_abun <- gost(co_ip_genes_abun$Genes, organism = "rnorvegicus", ordered_query = TRUE)
+gprofiler_abun <- gost(
+  co_ip_genes_abun$Genes, organism = "rnorvegicus", ordered_query = TRUE, sources = gprofiler_sources)
 gostplot(gprofiler_abun)
 ```
 
-```{r, fig.width = 11, fig.height = 94}
+```{r, fig.width = 11, fig.height = 85.5}
 publish_gosttable(gprofiler_abun)
 ```
 
