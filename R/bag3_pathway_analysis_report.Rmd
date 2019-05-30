@@ -76,7 +76,6 @@ We start by loading in any required packages for our analysis and setting some g
 library(conflicted)
 library(devtools)
 library(DT)
-library(gprofiler2)
 ```
 
 ```{r}
@@ -127,42 +126,76 @@ eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides c
 ## g:Profiler
 
 We start by taking our gene lists and inputing them into [g:Profiler](https://biit.cs.ut.ee/gprofiler/gost), a web service for functional enrichment analysis [@raudvere_g:profiler:_2019].
-The tool can be operated interactively through a web browser, but an R client is also provided, so we use that.
 g:Profiler is the first step in a 2019 Nature Protocols paper on pathway analysis [@reimand_pathway_2019] that we will generally be following for this analysis.
-The Manhattan plot obtained provides an interactive overview of terms enriched in the gene list and is followed by a listing of this information in tabular format.
-These figures are similar to those obtained using the g:Profiler web service.
+While an official R client was trialed for this section, it was found to have various deficiencies, so we opt to use the web GUI.
+Fortunately, reproducibility is granted through an auto-query feature, where a web URL is generated that leads to the original request.
+These URLs are included here and are also useful for interactive exploration.
+
+Two figures are provided in each subsection:
+
+- A Manhattan plot which shows the relative enrichment of various data source terms.
+By visiting the web app, one can click the circles and generate a table comparing the terms between the two gene lists.
+- A table breaking data source terms, their p-values, and genes determined to be associated with each term.
 
 ### BAG3 Co-IP MS {.tabset}
 
 Since we have two gene lists from this set that are nontrivial to combine, we shall continue analyzing them in parallel.
+Below are the parameters used for each list, documentation for which can be found [here](https://biit.cs.ut.ee/gprofiler/page/docs).
+An important caveat to consider is `no iea = false`, which includes electronic GO annotations generated in-silico.
+This data is of lower confidence than manually curated annotations, but when not including them no significant GO:BP terms are reported at all for this dataset, so we opt to include them.
 
-```{r}
-gprofiler_sources <- c("GO", "KEGG", "REAC")
+```
+version = e95_eg42_p13_f6e58b9
+organism = rnorvegicus
+all results = false
+ordered = true
+no iea = false
+sources = GO:MF, GO:CC, GO:BP, KEGG, REAC
+combined = true # false in tables
+numeric ns = ENTREZGENE_ACC
+domain scope = annotated
+measure underrepresentation = false
+significance threshold method = g_SCS
+user threshold = 0.05
+no evidences = false
 ```
 
-#### Specificity with BAG3
+It should also be noted that the following queries contain genes that are considered ambiguous by g:Profiler and must be manually resolved and has been done for the following figures.
+These resolutions are not recorded with the auto-query feature, so must be done again when visiting the interactive link.
 
-```{r}
-gprofiler_spec <- gost(
-  co_ip_genes_spec$Genes, organism = "rnorvegicus", ordered_query = TRUE, sources = gprofiler_sources)
-gostplot(gprofiler_spec)
+The following resolutions were performed:
+
+```
+BAG5 -> ENSRNOG00000011527
+HIST1H4B -> ENSRNOG00000032224
+MYH9 -> ENSRNOG00000004860
+RPL12 -> ENSRNOG00000028993
+RPS27A -> ENSRNOG00000004426
 ```
 
-```{r, fig.width = 11, fig.height = 86}
-publish_gosttable(gprofiler_spec)
+And the following were excluded due to the lack of resolution suggestions from g:Profiler:
+
 ```
+LRRC16B
+```
+
+#### Manhattan Plot
+
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/rwPdvoegQS)***
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-manhattan.png "g:Profiler Manhattan Plot")
+
+#### Specificity with BAG3 Table
+
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/MH1-cErbQB)***
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-spec-table.png "g:Profiler Specificity with BAG3 Table")
 
 #### Abundance of Protein
 
-```{r}
-gprofiler_abun <- gost(
-  co_ip_genes_abun$Genes, organism = "rnorvegicus", ordered_query = TRUE, sources = gprofiler_sources)
-gostplot(gprofiler_abun)
-```
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/ZE6924g1Qq)***
 
-```{r, fig.width = 11, fig.height = 85.5}
-publish_gosttable(gprofiler_abun)
-```
+![](../assets/gprofiler/gprofiler-bag3-co-ip-abun-table.png "g:Profiler Abundance of Protein Table")
 
 ## GSEA
 
@@ -188,18 +221,21 @@ Again, we separate the analysis by the gene list we use.
 The following figure shows the difference in enriched pathways when assessing enrichment with both gene lists present.
 Based on the number of two-color nodes, we see that while most pathways overlap, there are some that are more highly dominated by one set over the other.
 
-![](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F8bf62419dc43af1be850b3bb6955b304%252Fraw%252F63131490687ea4e1456b4bac0f00f31ea07e6fb6%252Fgprofiler-bag3-co-ip.cyjs?selectedstyle=BioPAX&x=595.5038337819253&y=178.3399064065584&zoom=0.5994187337962058&bgcolor=%23FAFAFA)***
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
 
 #### Specificity with BAG3
 
-![](../assets/gprofiler/gprofiler-bag3-co-ip-spec.svg "BAG3 Co-IP Specificity with BAG3")
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F8351b42f6bab833f4b2c2197294eda58%252Fraw%252Fa5c97493abe546eec990d5d4754578cfe8f5ba95%252Fgprofiler-bag3-co-ip-spec.cyjs?selectedstyle=BioPAX&x=684.9794850539971&y=336.52148973355526&zoom=0.7009428119046559&bgcolor=%23FAFAFA)***
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-spec.svg "BAG3 Co-IP Specificity with BAG3")
 
 #### Abundance of Protein
 
-![](../assets/gprofiler/gprofiler-bag3-co-ip-abun.svg "BAG3 Co-IP Abundance of Protein")
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F3a334fc9bb0c47633d19704afa75dda5%252Fraw%252Fa7ea763cb9e2be2f26ef73dc470b709d7fe1fe33%252Fgprofiler-bag3-co-ip-abun.cyjs?selectedstyle=BioPAX&x=773.9001702557123&y=298.8059692825723&zoom=0.7853911012735535&bgcolor=%23FAFAFA)***
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-abun.svg "BAG3 Co-IP Abundance of Protein")
 
 # References
 
