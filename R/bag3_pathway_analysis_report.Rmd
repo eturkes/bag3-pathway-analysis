@@ -209,12 +209,19 @@ However, this method is only suitable when near-genomewide expression profiles a
 Cytoscape [@shannon_cytoscape:_2003] is an open-source platform for visualization of networks with an extensive collection of third-party apps.
 Together with the apps Enrichment Map [@merico_enrichment_2010] and AutoAnnotate [@kucera_autoannotate:_2016], results from g:Profiler and GSEA can be visualized in an intuitive way.
 Although APIs exist to carry out this process programmatically, it is unwieldy considering that networks must be manually adjusted in almost all cases, so at least for the time being we opt to use the Cytoscape GUI.
-
-*NOTE: Links to figures in [CyNetShare](https://idekerlab.github.io/cy-net-share/) are also provided, which allow for interactive exploration of data, however it should be noted that this platform has limitations and some kinds of data may be lacking.*
+Links to figures in [CyNetShare](https://idekerlab.github.io/cy-net-share/) are also provided, which allow for interactive exploration of data with the caveat that there are slight alterations in the layout of nodes and the large clusters from AutoAnnotate cannot be displayed.
 
 ### BAG3 Co-IP MS {.tabset}
 
 Again, we separate the analysis by the gene list we use.
+The following parameters were used for all sections:
+
+```
+P-value = 1.0
+FDR Q-value = 0.1
+Test used = Jaccard Overlap Combined Index (k constant = 0.5)
+Jaccard Overlap Combined = 0.375
+```
 
 #### Specificity vs. Abundance
 
