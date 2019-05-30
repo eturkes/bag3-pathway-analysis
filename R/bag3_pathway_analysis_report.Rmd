@@ -177,17 +177,29 @@ Cytoscape [@shannon_cytoscape:_2003] is an open-source platform for visualizatio
 Together with the apps Enrichment Map [@merico_enrichment_2010] and AutoAnnotate [@kucera_autoannotate:_2016], results from g:Profiler and GSEA can be visualized in an intuitive way.
 Although APIs exist to carry out this process programmatically, it is unwieldy considering that networks must be manually adjusted in almost all cases, so at least for the time being we opt to use the Cytoscape GUI.
 
-*NOTE: Links to figures in [CyNetShare](https://idekerlab.github.io/cy-net-share/) are also provided, which also for interactive exploration of data, however it should be noted that this platform has limitations and some kinds of data may be lacking.*
+*NOTE: Links to figures in [CyNetShare](https://idekerlab.github.io/cy-net-share/) are also provided, which allow for interactive exploration of data, however it should be noted that this platform has limitations and some kinds of data may be lacking.*
 
-### BAG3 Co-IP MS
+### BAG3 Co-IP MS {.tabset}
+
+Again, we separate the analysis by the gene list we use.
 
 #### Specificity vs. Abundance
 
-The following figure shows the difference in enriched pathways when using the "Specificity with BAG3" vs. the "Abundance of Protein" set.
+The following figure shows the difference in enriched pathways when assessing enrichment with both gene lists present.
 Based on the number of two-color nodes, we see that while most pathways overlap, there are some that are more highly dominated by one set over the other.
 
 ![](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F8bf62419dc43af1be850b3bb6955b304%252Fraw%252F63131490687ea4e1456b4bac0f00f31ea07e6fb6%252Fgprofiler-bag3-co-ip.cyjs?selectedstyle=BioPAX&x=595.5038337819253&y=178.3399064065584&zoom=0.5994187337962058&bgcolor=%23FAFAFA)***
+
+#### Specificity with BAG3
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-spec.svg "BAG3 Co-IP Specificity with BAG3")
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F8351b42f6bab833f4b2c2197294eda58%252Fraw%252Fa5c97493abe546eec990d5d4754578cfe8f5ba95%252Fgprofiler-bag3-co-ip-spec.cyjs?selectedstyle=BioPAX&x=684.9794850539971&y=336.52148973355526&zoom=0.7009428119046559&bgcolor=%23FAFAFA)***
+
+#### Abundance of Protein
+
+![](../assets/gprofiler/gprofiler-bag3-co-ip-abun.svg "BAG3 Co-IP Abundance of Protein")
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F3a334fc9bb0c47633d19704afa75dda5%252Fraw%252Fa7ea763cb9e2be2f26ef73dc470b709d7fe1fe33%252Fgprofiler-bag3-co-ip-abun.cyjs?selectedstyle=BioPAX&x=773.9001702557123&y=298.8059692825723&zoom=0.7853911012735535&bgcolor=%23FAFAFA)***
 
 # References
 
