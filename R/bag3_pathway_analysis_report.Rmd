@@ -170,7 +170,8 @@ However, this method is only suitable when near-genomewide expression profiles a
 Cytoscape [@shannon_cytoscape:_2003] is an open-source platform for visualization of networks with an extensive collection of third-party apps.
 Together with the apps Enrichment Map [@merico_enrichment_2010] and AutoAnnotate [@kucera_autoannotate:_2016], results from g:Profiler and GSEA can be visualized in an intuitive way.
 Although APIs exist to carry out this process programmatically, it is unwieldy considering that networks must be manually adjusted in almost all cases, so at least for the time being we opt to use the Cytoscape GUI.
-In addition to static figures contained in this document, links are provided for the same figures using [CyNetShare](https://idekerlab.github.io/cy-net-share/), a web app that provides interactive exploration of Cytoscape data.
+
+*NOTE: Links to figures in [CyNetShare](https://idekerlab.github.io/cy-net-share/) are also provided, which also for interactive exploration of data, however it should be noted that this platform has limitations and some kinds of data may be lacking.*
 
 ### BAG3 Co-IP MS
 
@@ -180,6 +181,7 @@ The following figure shows the difference in enriched pathways when using the "S
 Based on the number of two-color nodes, we see that while most pathways overlap, there are some that are more highly dominated by one set over the other.
 
 ![](../assets/gprofiler/gprofiler-bag3-co-ip.svg "BAG3 Co-IP Specificity vs. Abundance")
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F8bf62419dc43af1be850b3bb6955b304%252Fraw%252F63131490687ea4e1456b4bac0f00f31ea07e6fb6%252Fgprofiler-bag3-co-ip.cyjs?selectedstyle=BioPAX&x=595.5038337819253&y=178.3399064065584&zoom=0.5994187337962058&bgcolor=%23FAFAFA)***
 
 # References
 
