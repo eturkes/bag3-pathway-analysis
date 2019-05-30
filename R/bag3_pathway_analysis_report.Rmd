@@ -183,19 +183,19 @@ LRRC16B
 
 ***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/rwPdvoegQS)***
 
-![](../assets/gprofiler/bag3-co-ip/manhattan.png "g:Profiler Manhattan Plot")
+![](../assets/gprofiler/bag3-co-ip/manhattan.png)
 
 #### Specificity with BAG3 Table
 
 ***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/O4Zn-_pwR9)***
 
-![](../assets/gprofiler/bag3-co-ip/spec-table.png "g:Profiler Specificity with BAG3 Table")
+![](../assets/gprofiler/bag3-co-ip/spec-table.png)
 
 #### Abundance of Protein Table
 
 ***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/4uaf8DTIT3)***
 
-![](../assets/gprofiler/bag3-co-ip/abun-table.png "g:Profiler Abundance of Protein Table")
+![](../assets/gprofiler/bag3-co-ip/abun-table.png)
 
 ## GSEA
 
@@ -223,7 +223,7 @@ Based on the number of two-color nodes, we see that while most pathways overlap,
 
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F7360dbccb8db210fef7ef8385eded0e5%252Fraw%252F0b08653728057fbec9618ce6106810ca0aeafd9c%252Fspec%252Babun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F81a5654d3b9e81945d7a65e174b0b1e1%2Fraw%2Fd9904faf86da0e74fb1554dacc6a9a5e8c26a025%2Fspec%2Babun.json&selectedstyle=EM1_Visual_Style&x=1230.4311528126464&y=-154.51040425965567&zoom=0.9781743467916821&bgcolor=%23FAFAFA)***
 
-![](../assets/cytoscape/bag3-co-ip/spec+abun.svg "Cytoscape Specificity vs. Abundance")
+![](../assets/cytoscape/bag3-co-ip/spec+abun.svg)
 
 #### Specificity with BAG3
 
