@@ -215,9 +215,11 @@ WDD has several distinct tools, which are summarized here:
 
 First, we use WDD's tools to get an overview of BAG3 without the addition of any datasets.
 
-### Explore a Network
+### Explore a Network {.tabset}
 
-#### Co-occuring Genes
+Each tab describes the co-occurance of the named entity with BAG3.
+
+#### Genes
 
 Parameters:
 
@@ -228,7 +230,7 @@ Minimum Documents = 1
 
 ![](../assets/watson/network-overview-genes.png)
 
-#### Co-occuring Mutant Genes
+#### Mutant Genes
 
 Parameters:
 
@@ -239,7 +241,7 @@ Minimum Documents = 1
 
 ![](../assets/watson/network-overview-mutant.png)
 
-#### Co-occuring Conditions
+#### Conditions
 
 Parameters:
 
@@ -250,7 +252,7 @@ Minimum Documents = 1
 
 ![](../assets/watson/network-overview-conditions.png)
 
-#### Co-occuring Adverse Events
+#### Adverse Events
 
 Parameters:
 
@@ -261,7 +263,7 @@ Minimum Documents = 1
 
 ![](../assets/watson/network-overview-adverse.png)
 
-#### Co-occuring Drugs
+#### Drugs
 
 Parameters:
 
@@ -272,7 +274,7 @@ Minimum Documents = 1
 
 ![](../assets/watson/network-overview-drugs.png)
 
-#### Co-occuring Chemicals
+#### Chemicals
 
 Parameters:
 
