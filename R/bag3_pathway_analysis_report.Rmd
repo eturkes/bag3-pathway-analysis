@@ -229,8 +229,8 @@ Jaccard Overlap Combined = 0.375
 
 ### Specificity vs. Abundance
 
-The following figure shows the difference in enriched pathways when assessing enrichment with both gene lists present, where green is from the Specificity with BAG3 set and blue is from the Abundance of Protein set.
-Based on the number of two-color nodes, we see that while most pathways overlap, some are enriched more in highly in one set over the other.
+The following figure shows the difference in enriched pathways when assessing enrichment with both gene lists present.
+Based on the number of two-color nodes, we see that while most pathways overlap, some are enriched more highly in one set over the other.
 
 ***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F7360dbccb8db210fef7ef8385eded0e5%252Fraw%252F0b08653728057fbec9618ce6106810ca0aeafd9c%252Fspec%252Babun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F81a5654d3b9e81945d7a65e174b0b1e1%2Fraw%2Fd9904faf86da0e74fb1554dacc6a9a5e8c26a025%2Fspec%2Babun.json&selectedstyle=EM1_Visual_Style&x=1230.4311528126464&y=-154.51040425965567&zoom=0.9781743467916821&bgcolor=%23FAFAFA)***
 
