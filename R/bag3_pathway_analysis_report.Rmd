@@ -203,9 +203,85 @@ However, this method is only suitable when near-genomewide expression profiles a
 # Watson for Drug Discovery
 
 IBM's [Watson for Drug Discovery](https://www.ibm.com/products/watson-drug-discovery) (WDD) is a text-mining platform that has built a massive corpus of scientific insights drawn from publications and other data forms.
-By inputting our data into the platform, we can use various measures from WDD to infer the likelihood that the contents and order are true.
-Note that due to the lack of a WDD API, this section was done manually rather than programmatically.
-WDD also does not take into account order, so the sort scheme does not matter.
+Various insights based on co-occurance in literature can be obtained with and without input lists of data, which can take the form of various entities (genes, drugs, diseases, etc).
+It should be noted that WDD does not take into account list order, so sort schemes will not matter.
+WDD also lacks an API, so this section was done manually rather than programmatically.
+
+WDD has several distinct tools, which are summarized here:
+
+- Explore a Network: A visualization of entities that co-occur with the input entities.
+
+## BAG3 Overview
+
+First, we use WDD's tools to get an overview of BAG3 without the addition of any datasets.
+
+### Explore a Network
+
+#### Co-occuring Genes
+
+Parameters:
+
+```
+Minimum Confidence = 1
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-genes.png)
+
+#### Co-occuring Mutant Genes
+
+Parameters:
+
+```
+Minimum Confidence = 1
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-mutant.png)
+
+#### Co-occuring Conditions
+
+Parameters:
+
+```
+Minimum Confidence = 7 # No entities below this value.
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-conditions.png)
+
+#### Co-occuring Adverse Events
+
+Parameters:
+
+```
+Minimum Confidence = 2 # No entities below this value.
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-adverse.png)
+
+#### Co-occuring Drugs
+
+Parameters:
+
+```
+Minimum Confidence = 63 # No entities below this value.
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-drugs.png)
+
+#### Co-occuring Chemicals
+
+Parameters:
+
+```
+Minimum Confidence = 16 # No entities below this value.
+Minimum Documents = 1
+```
+
+![](../assets/watson/network-overview-chemicals.png)
 
 # Visualization
 
