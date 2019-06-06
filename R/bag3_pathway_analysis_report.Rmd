@@ -228,7 +228,7 @@ Minimum Confidence = 1
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-genes.png)
+![](../assets/watson/network/overview-genes.png)
 
 #### Mutant Genes
 
@@ -239,7 +239,7 @@ Minimum Confidence = 1
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-mutant.png)
+![](../assets/watson/network/overview-mutant.png)
 
 #### Conditions
 
@@ -250,7 +250,7 @@ Minimum Confidence = 7 # No entities below this value.
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-conditions.png)
+![](../assets/watson/network/overview-conditions.png)
 
 #### Adverse Events
 
@@ -261,7 +261,7 @@ Minimum Confidence = 2 # No entities below this value.
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-adverse.png)
+![](../assets/watson/network/overview-adverse.png)
 
 #### Drugs
 
@@ -272,7 +272,7 @@ Minimum Confidence = 63 # No entities below this value.
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-drugs.png)
+![](../assets/watson/network/overview-drugs.png)
 
 #### Chemicals
 
@@ -283,7 +283,7 @@ Minimum Confidence = 16 # No entities below this value.
 Minimum Documents = 1
 ```
 
-![](../assets/watson/network-overview-chemicals.png)
+![](../assets/watson/network/overview-chemicals.png)
 
 # Visualization
 
