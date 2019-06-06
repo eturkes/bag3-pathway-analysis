@@ -99,7 +99,7 @@ Ideally, the two schemes would be combined to show which proteins interacted mos
 
 ```{r}
 co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes.rds"))
-cols <- c("Genes", "BAG3 Specificity", "Abundance Ratio",
+cols <- c("Gene", "BAG3 Specificity", "Abundance Ratio",
           "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
 
