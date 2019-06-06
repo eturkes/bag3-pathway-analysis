@@ -329,7 +329,7 @@ Based on the number of two-color nodes, we see that while most pathways overlap,
 # References
 
 This is the concluding section of the document.
-Here we write our data to disk for exploration in `Final Results` at the top of this report, output the `session_info`, and create a bibliography for works cited.
+Here we write relevant results to disk, output the `session_info`, and create a bibliography for works cited.
 
 ```{r}
 session_info()
