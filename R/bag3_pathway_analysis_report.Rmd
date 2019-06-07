@@ -81,6 +81,8 @@ results_dir <- file.path(getwd(), "..", "results")
 library(conflicted)
 library(devtools)
 library(DT)
+library(data.table)
+library(plyr)
 ```
 
 # Original Data
@@ -99,26 +101,26 @@ Ideally, the two schemes would be combined to show which proteins interacted mos
 
 ```{r}
 co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes.rds"))
-cols <- c("Gene", "BAG3 Specificity", "Abundance Ratio",
+co_ip_cols <- c("Gene", "BAG3 Specificity", "Abundance Ratio",
           "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
 ```
 
 ### Specificity with BAG3
 
 ```{r}
-co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[cols[2]]], co_ip_genes[[cols[6]]]), ]
+co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[2]]], co_ip_genes[[co_ip_cols[6]]]), ]
 rownames(co_ip_genes_spec) <- NULL # Reset row numbers.
 eturkesRutils::datatable(co_ip_genes_spec) %>% # From my own package, provides custom formatting.
-  formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
+  formatRound(c(2, 3, 4)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
 ### Abundance of Protein
 
 ```{r}
-co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[cols[5]]], -co_ip_genes[[cols[6]]]), ]
+co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[5]]], -co_ip_genes[[co_ip_cols[6]]]), ]
 rownames(co_ip_genes_abun) <- NULL # Reset row numbers.
 eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides custom formatting.
-  formatRound(c(2, 3, 4)) %>% formatStyle(cols[1], `text-align` = "center")
+  formatRound(c(2, 3, 4)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
 # g:Profiler
@@ -217,7 +219,7 @@ First, we use WDD's tools to get an overview of BAG3 without the addition of any
 
 ### Explore a Network {.tabset}
 
-Each tab describes the co-occurance of the named entity with BAG3.
+Each tab visualizes the co-occurance of the named entity with BAG3.
 
 #### Genes
 
@@ -284,6 +286,72 @@ Minimum Documents = 1
 ```
 
 ![](../assets/watson/network/overview-chemicals.png)
+
+### Co-occurrence {.tabset}
+
+Each tab provides a table of the co-occurance of the named entity with BAG3.
+Tables are sorted by p-value and secondary sorted by Documents with BAG3.
+
+```{r}
+co_occur_cols <- c("Entity", "Total Documents", "Documents with BAG3", "p-value")
+
+# Function for renaming and subsetting columns and sorting rows.
+import_co_occur <- function(file, cols) {
+  co_occur <- fread(file.path(assets_dir, "watson", "co-occurrence", file))
+  co_occur <- rename(co_occur, c(
+    "Entity name" = cols[1], "Documents" = cols[2],
+    "(Documents) BAG3" = cols[3], "(Affinity) BAG3" = cols[4]))
+  co_occur <- co_occur[order(co_occur[[cols[4]]], -co_occur[[cols[3]]]), ]
+  co_occur <- co_occur[ , cols, with = FALSE]}
+```
+
+#### Genes
+
+```{r}
+co_occur <- import_co_occur("overview-genes.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
+
+#### Mutant Genes
+
+```{r}
+co_occur <- import_co_occur("overview-mutant.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
+
+#### Conditions
+
+```{r}
+co_occur <- import_co_occur("overview-conditions.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
+
+#### Adverse Events
+
+```{r}
+co_occur <- import_co_occur("overview-adverse.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
+
+#### Drugs
+
+```{r}
+co_occur <- import_co_occur("overview-drugs.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
+
+#### Chemicals
+
+```{r}
+co_occur <- import_co_occur("overview-chemicals.csv", co_occur_cols)
+eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+  formatStyle(co_occur_cols[1], `text-align` = "center")
+```
 
 # Visualization
 

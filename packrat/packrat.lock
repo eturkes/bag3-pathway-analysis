@@ -99,6 +99,11 @@ Source: CRAN
 Version: 3.3
 Hash: b201f64e6e1469e8a3571c746ffa9059
 
+Package: data.table
+Source: CRAN
+Version: 1.12.2
+Hash: b1642cf2ee0ab1d1b152ffacdb4401f7
+
 Package: desc
 Source: CRAN
 Version: 1.2.0
