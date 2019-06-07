@@ -135,7 +135,7 @@ Two figures are provided in each subsection:
 
 - A Manhattan plot which shows the relative enrichment of various data source terms.
 By visiting the web app, one can click the circles and generate a table comparing the terms between the two gene lists.
-- A table breaking data source terms, their p-values, and genes determined to be associated with each term.
+- A table breaking down data source terms, their p-values, and genes determined to be associated with each term.
 
 ## BAG3 Co-IP MS {.tabset}
 
@@ -205,7 +205,7 @@ However, this method is only suitable when near-genomewide expression profiles a
 # Watson for Drug Discovery
 
 IBM's [Watson for Drug Discovery](https://www.ibm.com/products/watson-drug-discovery) (WDD) is a text-mining platform that has built a massive corpus of scientific insights drawn from publications and other data forms.
-Various insights based on co-occurance in literature can be obtained with and without input lists of data, which can take the form of various entities (genes, drugs, diseases, etc).
+Various insights based on co-occurrence in literature can be obtained with and without input lists of data, which can take the form of various entities (genes, drugs, diseases, etc).
 It should be noted that WDD does not take into account list order, so sort schemes will not matter.
 WDD also lacks an API, so this section was done manually rather than programmatically.
 
@@ -290,7 +290,7 @@ Minimum Documents = 1
 ### Co-occurrence {.tabset}
 
 Each tab provides a table of the co-occurance of the named entity with BAG3.
-Tables are sorted by p-value and secondary sorted by Documents with BAG3.
+Tables are primary sorted by p-value and secondary sorted by Documents with BAG3.
 
 ```{r}
 co_occur_cols <- c("Entity", "Total Documents", "Documents with BAG3", "p-value")
