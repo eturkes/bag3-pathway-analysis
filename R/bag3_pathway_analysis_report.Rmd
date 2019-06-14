@@ -101,26 +101,27 @@ Ideally, the two schemes would be combined to show which proteins interacted mos
 
 ```{r}
 co_ip_genes <- readRDS(file.path(assets_dir, "bag3-co-ip", "co_ip_genes.rds"))
-co_ip_cols <- c("Gene", "BAG3 Specificity", "Abundance Ratio",
-          "Watson Confidence", "scrRNA Abundance", "shBAG3 Abundance")
+co_ip_cols <- c(
+  "Gene", "BAG3 Specificity", "Scaled Abundance Ratio", "Watson Specificity Confidence",
+  "Watson BAG3 Similarity", "scrRNA Abundance", "shBAG3 Abundance")
 ```
 
 ### Specificity with BAG3
 
 ```{r}
-co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[2]]], co_ip_genes[[co_ip_cols[6]]]), ]
+co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[2]]], co_ip_genes[[co_ip_cols[7]]]), ]
 rownames(co_ip_genes_spec) <- NULL # Reset row numbers.
 eturkesRutils::datatable(co_ip_genes_spec) %>% # From my own package, provides custom formatting.
-  formatRound(c(2, 3, 4)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
+  formatRound(c(2, 3, 4, 5)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
 ### Abundance of Protein
 
 ```{r}
-co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[5]]], -co_ip_genes[[co_ip_cols[6]]]), ]
+co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[6]]], -co_ip_genes[[co_ip_cols[7]]]), ]
 rownames(co_ip_genes_abun) <- NULL # Reset row numbers.
 eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides custom formatting.
-  formatRound(c(2, 3, 4)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
+  formatRound(c(2, 3, 4, 5)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
 # g:Profiler
