@@ -94,8 +94,8 @@ The following subsection(s) provide a brief overview of the datasets used in thi
 Source: [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip)
 
 The final Co-IP MS dataset after cleaning as described in the report’s method section.
-Briefly, the original dataset was subject to missing value imputation via a custom method, renormalized, and changes between scr and shBAG3 conditions were hypothesis tested using the beta-binomial method.
-Additional validation was performed using Watson for Drug Discovery.
+Briefly, the original dataset was subject to missing value imputation via a custom method, the abundance ratio was scaled to a range of $0-100$, and changes between scr and shBAG3 conditions were hypothesis tested using the beta-binomial method.
+Additional validation was performed using Watson for Drug Discovery, which looks for literature and chemical relationships among entities.
 Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
 Ideally, the two schemes would be combined to show which proteins interacted most highly with BAG3, but this is nontrivial to do accurately considering experimental limitations.
 
@@ -197,11 +197,6 @@ LRRC16B
 ***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/4uaf8DTIT3)***
 
 ![](../assets/gprofiler/bag3-co-ip/abun-table.png)
-
-# GSEA
-
-GSEA (gene set enrichment analysis) [@subramanian_gene_2005], is a common pathway analysis method when dealing with a ranked gene list.
-However, this method is only suitable when near-genomewide expression profiles are available, which means certain datasets, like that from the BAG3 Co-IP MS analysis, cannot be used.
 
 # Watson for Drug Discovery
 
