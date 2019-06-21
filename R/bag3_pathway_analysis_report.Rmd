@@ -1,7 +1,7 @@
 ---
 title: "BAG3 Pathway Analysis"
 author:
-  - name: "Emir Turkes"
+  - name: "Emir Turkes [et2628@cumc.columbia.edu]"
   - name: "Columbia University"
 date: '`r strftime(Sys.time(), format = "%B %d, %Y")`'
 bibliography: "../bag3-pathway-analysis.bib"
@@ -11,6 +11,7 @@ output:
   html_document:
     number_sections: true
     theme: lumen
+    highlight: zenburn
     toc: true
     toc_depth: 2
     toc_float:
@@ -70,17 +71,12 @@ The source code and instructions for rerunning the analysis can be found at [git
 # ~~~ Breakdown of Methods ~~~ {-}
 
 The following top-level sections break down the methods used to perform the analysis and only needs to be read if one is interested.
-We start by setting some global variables and loading in any required packages.
+We start by loading in any required packages and setting some global variables.
 
 ```{r}
-library(conflicted)
-library(devtools)
-library(DT)
-library(data.table)
-library(plyr)
-```
+packages <- c("conflicted", "DT", "data.table", "plyr")
+invisible(suppressMessages(lapply(packages, library, character.only = TRUE)))
 
-```{r}
 assets_dir <- file.path(getwd(), "..", "assets")
 results_dir <- file.path(getwd(), "..", "results")
 ```
@@ -393,8 +389,8 @@ Based on the number of two-color nodes, we see that while most pathways overlap,
 # References
 
 This is the concluding section of the document.
-Here we write relevant results to disk, output the `session_info`, and create a bibliography for works cited.
+Here we write relevant results to disk, output the `sessionInfo`, and create a bibliography for works cited.
 
 ```{r}
-session_info()
+sessionInfo()
 ```
