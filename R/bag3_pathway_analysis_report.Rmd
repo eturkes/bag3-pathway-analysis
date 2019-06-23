@@ -66,11 +66,12 @@ The source code and instructions for rerunning the analysis can be found at [git
 
 # Final Results
 
-**Read just this section for the final results of the analysis and a brief summary of the methods.**
+**Read just the following sub-section for the final results of the analysis and a brief summary of the methods.**
 
 # ~~~ Breakdown of Methods ~~~ {-}
 
-The following top-level sections break down the methods used to perform the analysis and only needs to be read if one is interested.
+**Sections from here to the end break down the methods used and are optional to read.**
+
 We start by loading in any required packages and setting some global variables.
 
 ```{r}
@@ -90,7 +91,7 @@ The following subsection(s) provide a brief overview of the datasets used in thi
 Source: [github.com/eturkes/bag3-co-ip](https://github.com/eturkes/bag3-co-ip)
 
 The final Co-IP MS dataset after cleaning as described in the report’s method section.
-Briefly, the original dataset was subject to missing value imputation via a custom method, the abundance ratio was scaled to a range of $0-100$, and changes between scr and shBAG3 conditions were hypothesis tested using the beta-binomial method.
+Briefly, the original dataset was subject to missing value imputation via a custom method, the abundance ratio was scaled to a range of 0-100, and changes between scr and shBAG3 conditions were hypothesis tested using the beta-binomial method.
 Additional validation was performed using Watson for Drug Discovery, which looks for literature and chemical relationships among entities.
 Two sort schemes are presented, one to show specificity with BAG3 and another to show the most abundant Co-IP proteins.
 Ideally, the two schemes would be combined to show which proteins interacted most highly with BAG3, but this is nontrivial to do accurately considering experimental limitations.
