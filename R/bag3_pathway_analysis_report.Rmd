@@ -76,7 +76,7 @@ We start by loading in any required packages and setting some global variables.
 
 ```{r}
 packages <- c("conflicted", "DT", "data.table", "plyr")
-invisible(suppressMessages(lapply(packages, library, character.only = TRUE)))
+invisible(suppressPackageStartupMessages(lapply(packages, library, character.only = TRUE)))
 
 assets_dir <- file.path(getwd(), "..", "assets")
 results_dir <- file.path(getwd(), "..", "results")
