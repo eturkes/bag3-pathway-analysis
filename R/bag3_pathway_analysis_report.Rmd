@@ -38,7 +38,7 @@ knit:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-knitr::opts_chunk$set(fig.width = 8.5, fig.height = 7, error = TRUE)
+knitr::opts_chunk$set(fig.width = 8.5, fig.height = 7)
 ```
 
 <style type="text/css">
@@ -75,11 +75,23 @@ The source code and instructions for rerunning the analysis can be found at [git
 We start by loading in any required packages and setting some global variables.
 
 ```{r}
-packages <- c("conflicted", "DT", "data.table", "plyr")
+packages <- c("conflicted", "magrittr", "DT", "data.table", "plyr")
 invisible(suppressPackageStartupMessages(lapply(packages, library, character.only = TRUE)))
 
 assets_dir <- file.path(getwd(), "..", "assets")
 results_dir <- file.path(getwd(), "..", "results")
+
+# Adds download buttons and exponential values.
+datatable_custom <- function(dt) {
+  datatable(
+    dt,
+    extensions = "Buttons", options = list(dom = "Blfrtip", buttons = list(
+      "copy", "print",
+      list(extend = "collection", buttons = c("csv", "excel", "pdf"), text = "Download")),
+    rowCallback = JS(
+      "function(row, data) {for (i = 1; i < data.length; i++) {if (data[i]>1000 | data[i]<1) {",
+        "$('td:eq('+i+')', row).html(data[i].toExponential(2));",
+      "}}}")))}
 ```
 
 # Original Data
@@ -108,7 +120,7 @@ co_ip_cols <- c(
 ```{r}
 co_ip_genes_spec <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[2]]], co_ip_genes[[co_ip_cols[7]]]), ]
 rownames(co_ip_genes_spec) <- NULL # Reset row numbers.
-eturkesRutils::datatable(co_ip_genes_spec) %>% # From my own package, provides custom formatting.
+datatable_custom(co_ip_genes_spec) %>%
   formatRound(c(2, 3, 4, 5)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
@@ -117,7 +129,7 @@ eturkesRutils::datatable(co_ip_genes_spec) %>% # From my own package, provides c
 ```{r}
 co_ip_genes_abun <- co_ip_genes[order(-co_ip_genes[[co_ip_cols[6]]], -co_ip_genes[[co_ip_cols[7]]]), ]
 rownames(co_ip_genes_abun) <- NULL # Reset row numbers.
-eturkesRutils::datatable(co_ip_genes_abun) %>% # From my own package, provides custom formatting.
+datatable_custom(co_ip_genes_abun) %>%
   formatRound(c(2, 3, 4, 5)) %>% formatStyle(co_ip_cols[1], `text-align` = "center")
 ```
 
@@ -302,7 +314,7 @@ import_co_occur <- function(file, cols) {
 
 ```{r}
 co_occur <- import_co_occur("overview-genes.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
@@ -310,7 +322,7 @@ eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom fo
 
 ```{r}
 co_occur <- import_co_occur("overview-mutant.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
@@ -318,7 +330,7 @@ eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom fo
 
 ```{r}
 co_occur <- import_co_occur("overview-conditions.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
@@ -326,7 +338,7 @@ eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom fo
 
 ```{r}
 co_occur <- import_co_occur("overview-adverse.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
@@ -334,7 +346,7 @@ eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom fo
 
 ```{r}
 co_occur <- import_co_occur("overview-drugs.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
@@ -342,7 +354,7 @@ eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom fo
 
 ```{r}
 co_occur <- import_co_occur("overview-chemicals.csv", co_occur_cols)
-eturkesRutils::datatable(co_occur) %>% # From my own package, provides custom formatting.
+datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
 
