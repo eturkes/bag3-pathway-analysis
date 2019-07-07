@@ -31,4 +31,4 @@ To open RStudio, run:
 ```
 docker-compose up rstudio
 ```
-It will be available in your web browser at the address [localhost:8787](http://localhost:8787).
+It will be available in your web browser at the address [localhost:8788](http://localhost:8788).
