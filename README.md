@@ -19,6 +19,16 @@ limitations under the License.
 
 Pathway Analysis of the BAG3 protein  
 
-In order to run and view the results of this analysis, the prerequisite data is required.
-Please contact me at emir.turkes@eturkes.com if you are interested.
-Otherwise, feel free to reuse this codebase in accordance with the license.
+A Docker image for this project is available from [DockerHub](https://cloud.docker.com/repository/docker/eturkes/bag3-pathway-analysis/general).  
+This is the recommended way to reproduce and explore the project.  
+
+To run all scripts and generate an HTML report in the `results` directory, just run:
+```
+docker-compose run all
+```
+
+To open RStudio, run:
+```
+docker-compose up rstudio
+```
+It will be available in your web browser at the address [localhost:8787](http://localhost:8787).
