@@ -16,19 +16,10 @@ FROM rocker/rstudio:3.6.0
 
 LABEL maintainer="Emir Turkes emir.turkes@eturkes.com"
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libcurl4-gnutls-dev \
-        libxml2-dev \
-        libz-dev \
-        lib32z1-dev \
-        pandoc \
-        gawk \
-        bzip2 \
-    && Rscript -e "install.packages('conflicted')" \
+RUN Rscript -e "install.packages('conflicted')" \
     && Rscript -e "install.packages('rmarkdown')" \
+    && Rscript -e "install.packages('rprojroot')" \
     && Rscript -e "install.packages('magrittr')" \
-    && Rscript -e "install.packages('svd')" \
     && Rscript -e "install.packages('DT')" \
     && Rscript -e "install.packages('data.table')" \
     && Rscript -e "install.packages('plyr')" \

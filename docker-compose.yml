@@ -16,13 +16,13 @@ version: "3"
 
 services:
   all:
-    image: eturkes/bag3-pathway-analysis:R3.6.0v1
+    image: eturkes/bag3-pathway-analysis:R3.6.0v2
     volumes:
       - ".:/bag3-pathway-analysis:rw"
     command: Rscript -e "source('/bag3-pathway-analysis/R/run_all.R')"
 
   rstudio:
-    image: eturkes/bag3-pathway-analysis:R3.6.0v1
+    image: eturkes/bag3-pathway-analysis:R3.6.0v2
     volumes:
       - ".:/bag3-pathway-analysis:rw"
     ports:
