@@ -17,12 +17,12 @@ FROM rocker/rstudio:3.6.0
 LABEL maintainer="Emir Turkes emir.turkes@eturkes.com"
 
 RUN Rscript -e "install.packages('conflicted')" \
-    && Rscript -e "install.packages('rmarkdown')" \
-    && Rscript -e "install.packages('rprojroot')" \
-    && Rscript -e "install.packages('magrittr')" \
-    && Rscript -e "install.packages('DT')" \
-    && Rscript -e "install.packages('data.table')" \
-    && Rscript -e "install.packages('plyr')" \
+    -e "install.packages('rmarkdown')" \
+    -e "install.packages('rprojroot')" \
+    -e "install.packages('magrittr')" \
+    -e "install.packages('DT')" \
+    -e "install.packages('data.table')" \
+    -e "install.packages('plyr')" \
     && apt-get clean \
     && rm -Rf /var/lib/apt/lists/ \
         /tmp/downloaded_packages/ \
