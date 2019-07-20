@@ -19,12 +19,12 @@ services:
     image: eturkes/bag3-pathway-analysis:R3.6.0v3
     volumes:
       - ".:/bag3-pathway-analysis:rw"
-    command: Rscript -e "source('/bag3-pathway-analysis/R/run_all.R')"
+    command: Rscript -e "setwd('/bag3-pathway-analysis/R/')" -e "rmarkdown::render('bag3_pathway_analysis_report.Rmd', output_file = '../results/bag3-pathway-analysis-report.html')"
 
   rstudio:
     image: eturkes/bag3-pathway-analysis:R3.6.0v3
     volumes:
-      - ".:/bag3-pathway-analysis:rw"
+      - ".:/home/rstudio/bag3-pathway-analysis:rw"
     ports:
       - "127.0.0.1:8788:8787"
     environment:
