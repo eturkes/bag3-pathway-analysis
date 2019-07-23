@@ -151,15 +151,13 @@ By visiting the web app, one can click the circles and generate a table comparin
 
 Since we have two gene lists from this set that are nontrivial to combine, we shall continue analyzing them in parallel.
 Below are the parameters used for each list, documentation for which can be found [here](https://biit.cs.ut.ee/gprofiler/page/docs).
-An important caveat to consider is `no iea`, which when true, includes electronic GO annotations generated in-silico that are considered of lower confidence than manually curated.
-To present the results as clearly as possible, we opt to include these electronic annotations in the Manhattan plot but not the tables nor later analyses in this report.
 
 ```
-version = e95_eg42_p13_f6e58b9
+version = 96_eg43_p13_563554d
 organism = rnorvegicus
 all results = false
 ordered = true
-no iea = true # false in Manhattan plot.
+no iea = true
 sources = GO:MF, GO:CC, GO:BP, KEGG, REAC
 combined = false # true in Manhattan plot.
 numeric ns = ENTREZGENE_ACC
@@ -177,33 +175,27 @@ The following resolutions were performed:
 
 ```
 BAG5 -> ENSRNOG00000011527
-HIST1H4B -> ENSRNOG00000032224
+HIST1H4B -> ENSRNOG00000050933
 MYH9 -> ENSRNOG00000004860
 RPL12 -> ENSRNOG00000028993
 RPS27A -> ENSRNOG00000004426
 ```
 
-And the following were excluded due to the lack of resolution suggestions from g:Profiler:
-
-```
-LRRC16B
-```
-
 ### Manhattan Plot
 
-***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/rwPdvoegQS)***
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/-IIDfFx5RW)***
 
 ![](../assets/gprofiler/bag3-co-ip/manhattan.png)
 
 ### Specificity with BAG3 Table
 
-***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/O4Zn-_pwR9)***
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/QYOvk8ygQT)***
 
 ![](../assets/gprofiler/bag3-co-ip/spec-table.png)
 
 ### Abundance of Protein Table
 
-***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/4uaf8DTIT3)***
+***[Link to Interactive Version](https://biit.cs.ut.ee/gplink/l/ebtBwZNgTY)***
 
 ![](../assets/gprofiler/bag3-co-ip/abun-table.png)
 
