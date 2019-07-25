@@ -375,19 +375,19 @@ Jaccard Overlap Combined = 0.375
 The following figure shows the difference in enriched pathways when assessing enrichment with both gene lists present.
 Based on the number of two-color nodes, we see that while most pathways overlap, some are enriched more highly in one set over the other.
 
-***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F7360dbccb8db210fef7ef8385eded0e5%252Fraw%252F0b08653728057fbec9618ce6106810ca0aeafd9c%252Fspec%252Babun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F81a5654d3b9e81945d7a65e174b0b1e1%2Fraw%2Fd9904faf86da0e74fb1554dacc6a9a5e8c26a025%2Fspec%2Babun.json&selectedstyle=EM1_Visual_Style&x=1230.4311528126464&y=-154.51040425965567&zoom=0.9781743467916821&bgcolor=%23FAFAFA)***
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F7360dbccb8db210fef7ef8385eded0e5%252Fraw%252F62ce401758ef983a50a902e923567c7db2f7af85%252Fspec%252Babun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F81a5654d3b9e81945d7a65e174b0b1e1%2Fraw%2F6f32a8cf0bc320e8a16f713207626bd8e09854cb%2Fspec%2Babun.json&selectedstyle=EM1_Visual_Style&x=277.8236625542902&y=88.71625743249547&zoom=0.763229065064947&bgcolor=%23FAFAFA)***
 
 ![](../assets/cytoscape/bag3-co-ip/spec+abun.svg)
 
 ### Specificity with BAG3
 
-***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F71aac16c39bdaf4104b53b905fa59515%252Fraw%252F377ecda8b5ce83ad7aa6844de62c5b234f3efd5f%252Fspec.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F58ee5a6197403c08acf0ca925aec8a60%2Fraw%2Ff849ef446d656f16e1919f5897668a9bb12e27f7%2Fspec.json&selectedstyle=EM1_Visual_Style&x=320.04823758826353&y=277.3714084746141&zoom=1.1210240975899868&bgcolor=%23FAFAFA)***
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F71aac16c39bdaf4104b53b905fa59515%252Fraw%252F6a2441c9245073931c08c111231da21e004eddd5%252Fspec.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F58ee5a6197403c08acf0ca925aec8a60%2Fraw%2F74f8a001a7a10693f1c20c86312c073f1678e17f%2Fspec.json&selectedstyle=EM1_Visual_Style&x=320.04823758826353&y=277.3714084746141&zoom=1.1210240975899868&bgcolor=%23FAFAFA)***
 
 ![](../assets/cytoscape/bag3-co-ip/spec.svg)
 
 ### Abundance of Protein
 
-***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F4fecb1bbf3285a2fe2e043f052092cb5%252Fraw%252F62686a1869490eee957cb8c3aa998b13cf4fc729%252Fabun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F756cc7fd5c35b2cf21eb2fab0ee05b83%2Fraw%2F8a536478b9cb5200a102f795dad12b9fbdfc3cca%2Fabun.json&selectedstyle=EM1_Visual_Style&x=1117.1577411836033&y=557.2973269612608&zoom=1.0987881493574445&bgcolor=%23FAFAFA)***
+***[Link to Interactive Version](http://cynetshare.ucsd.edu/#/https%253A%252F%252Fgist.githubusercontent.com%252Feturkes%252F4fecb1bbf3285a2fe2e043f052092cb5%252Fraw%252F05c8abd2e0d523df265062907f5b0cf66074fd32%252Fabun.cyjs?stylefile=https%3A%2F%2Fgist.githubusercontent.com%2Feturkes%2F756cc7fd5c35b2cf21eb2fab0ee05b83%2Fraw%2Fa9ee6546e5cdc5f27148008d3790603b2908dd33%2Fabun.json&selectedstyle=EM1_Visual_Style&x=258.8300296441871&y=387.81245291405156&zoom=0.7616981070036751&bgcolor=%23FAFAFA)***
 
 ![](../assets/cytoscape/bag3-co-ip/abun.svg)
 
