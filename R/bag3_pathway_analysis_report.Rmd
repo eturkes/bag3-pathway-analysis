@@ -1,7 +1,7 @@
 ---
 title: "BAG3 Pathway Analysis"
 author:
-  - name: "Emir Turkes [et2628@cumc.columbia.edu]"
+  - name: "Emir Turkes [emir.turkes@eturkes.com]"
   - name: "Columbia University"
 date: '`r strftime(Sys.time(), format = "%B %d, %Y")`'
 bibliography: "../bag3-pathway-analysis.bib"
