@@ -9,6 +9,7 @@ biblio-style: apalike
 link-citations: true
 output:
   html_document:
+    code_folding: show
     number_sections: true
     theme: lumen
     highlight: haddock
@@ -349,6 +350,115 @@ co_occur <- import_co_occur("overview-chemicals.csv", co_occur_cols)
 datatable_custom(co_occur) %>%
   formatStyle(co_occur_cols[1], `text-align` = "center")
 ```
+
+## BAG3 Co-IP MS
+
+### Explore a Network {.tabset}
+
+Each tab visualizes the co-occurance of the named entity with BAG3.
+Default parameters, which are based on the connectivity of the network, is used for each figure.
+
+#### Genes
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 85
+Minimum Documents = 2
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-genes.png)
+
+**Abundance of Protein**
+
+Parameters:
+
+```
+Minimum Confidence = 89
+Minimum Documents = 1
+```
+
+![](../assets/watson/network/bag3-co-ip-abun-10-genes.png)
+
+#### Genes Common with BAG3
+
+We narrow down the network to show only those genes that have a direct connection with BAG3.
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 85
+Minimum Documents = 2
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-genes-common.png)
+
+**Abundance of Protein**
+
+Parameters:
+
+```
+Minimum Confidence = 1
+Minimum Documents = 1
+```
+
+![](../assets/watson/network/bag3-co-ip-abun-10-genes-common.png)
+
+#### Mutant Genes
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 54
+Minimum Documents = 3
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-mutant.png)
+
+#### Mutant Genes Common with BAG3
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 54
+Minimum Documents = 3
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-mutant-common.png)
+
+#### Conditions
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 80
+Minimum Documents = 1
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-conditions.png)
+
+#### Conditions Common with BAG3
+
+**Specificity with BAG3**
+
+Parameters:
+
+```
+Minimum Confidence = 80
+Minimum Documents = 1
+```
+
+![](../assets/watson/network/bag3-co-ip-spec-10-conditions-common.png)
 
 # Visualization
 
