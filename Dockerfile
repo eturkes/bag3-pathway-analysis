@@ -27,3 +27,4 @@ RUN Rscript -e "install.packages('conflicted')" \
     && rm -Rf /var/lib/apt/lists/ \
         /tmp/downloaded_packages/ \
         /tmp/*.rds
+COPY user-settings /home/rstudio/.rstudio/monitored/user-settings/

@@ -16,13 +16,13 @@ version: "3"
 
 services:
   all:
-    image: eturkes/bag3-pathway-analysis:R3.6.0v3
+    image: eturkes/bag3-pathway-analysis:R3.6.0v4
     volumes:
       - ".:/bag3-pathway-analysis:rw"
     command: Rscript -e "setwd('/bag3-pathway-analysis/R/')" -e "rmarkdown::render('bag3_pathway_analysis_report.Rmd', output_file = '../results/bag3-pathway-analysis-report.html')"
 
   rstudio:
-    image: eturkes/bag3-pathway-analysis:R3.6.0v3
+    image: eturkes/bag3-pathway-analysis:R3.6.0v4
     volumes:
       - ".:/home/rstudio/bag3-pathway-analysis:rw"
     ports:
