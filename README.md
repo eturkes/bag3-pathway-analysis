@@ -23,7 +23,7 @@ In order to run and view the results of this analysis, the prerequisite data is 
 Please contact me at emir.turkes@eturkes.com if you are interested.
 After obtaining the data, it should be unzipped and its directory moved to the project root and renamed as `gdrive`.
 
-A Docker image for this project is available from [DockerHub](https://cloud.docker.com/repository/docker/eturkes/bag3-pathway-analysis/general).
+A Docker image for this project is available from [DockerHub](https://hub.docker.com/r/eturkes/bag3-pathway-analysis).
 This is the recommended way to reproduce and explore the project.
 
 To run all scripts and generate an HTML report in the `results` directory, just run:
