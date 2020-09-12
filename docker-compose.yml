@@ -26,6 +26,6 @@ services:
     volumes:
       - ".:/home/rstudio/bag3-pathway-analysis:rw"
     ports:
-      - "127.0.0.1:8788:8787"
+      - "127.0.0.1:${PORT}:8787"
     environment:
       -  DISABLE_AUTH=true
